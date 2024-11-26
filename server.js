@@ -1,36 +1,34 @@
-const express = require("express");
-const mongoose = require("mongoose");
+import songsRoute from './routes/songsRoute.js';
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors'
+import dotenv from 'dotenv'
+dotenv.config()
+
 const app = express();
 
-const PORT = 8000;
+const PORT = process.env.PORT;
+const uri = process.env.MONGO_URI;
+const CORSAO = process.env.ALLOWED_ORIGINS
 
-const uri = "mongodb+srv://trinpasith:qbULMQUIvxqkq1Sr@projcluster.tdl1p.mongodb.net/?retryWrites=true&w=majority&appName=ProjCluster";
 
+app.use(express.json());
 
-// app.set('port', process.env.PORT || 8000);
-
-//Basic routes
-app.use(express.static('public'));
+app.use(
+  cors({
+    origin: CORSAO,
+    method: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type']
+  })
+);
 
 app.get('/', (req,res) => {
-   res.status(200).send("success!");
+    console.log(req);
+    return res.status(200).send("success!");
 });
 
-app.get('/about',(req,res)=>{
-   res.send('About page');
-});
+app.use('/api/songs', songsRoute);
 
-//Express error handling middleware
-app.use((req,res)=>{
-   res.type('text/plain');
-   res.status(505);
-   res.send('Error page');
-});
-
-//Binding to a port
-app.listen(3000, ()=>{
-  console.log('Express server started at port 3000');
-});
 
 async function connect() {
     try {
