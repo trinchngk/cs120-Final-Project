@@ -9,7 +9,7 @@ const app = express();
 
 const PORT = process.env.PORT;
 const uri = process.env.MONGO_URI;
-const CORSAO = process.env.ALLOWED_ORIGINS
+const CORSAO = process.env.ALLOWED_ORIGINS?.split(',');
 
 
 app.use(express.json());
