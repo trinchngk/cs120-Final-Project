@@ -47,3 +47,5 @@ async function connect() {
 connect();
 
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));
+
+export default app;
