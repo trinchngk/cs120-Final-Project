@@ -6,7 +6,7 @@ const router = express.Router();
 router.post('/', async (request, response) => {
   try {
 
-    if (!request.body.title || !request.body.artist || !request.body.album || !request.body.published || !request.body.genre) {
+    if (!request.body.title || !request.body.artist || !request.body.album || !request.body.published || !request.body.genre || !request.body.rating || !request.body.cover) {
       return response.status(400).send('Request body is missing fields');
     }
 
@@ -15,7 +15,9 @@ router.post('/', async (request, response) => {
       artist: request.body.artist,
       album: request.body.album,
       published: request.body.published,
-      genre: request.body.genre
+      genre: request.body.genre,
+      rating: request.body.rating,
+      cover: request.body.cover
     };
 
     const song = await Song.create(newSong);
@@ -61,7 +63,7 @@ router.get('/:id', async (request, response) => {
 //app.put() is used to update a resource
 router.put('/:id', async (request, response) => {
   try {
-    if (!request.body.title || !request.body.artist || !request.body.album || !request.body.published || !request.body.genre) {
+    if (!request.body.title || !request.body.artist || !request.body.album || !request.body.published || !request.body.genre || !request.body.rating || !request.body.cover) {
       return response.status(400).send('Request body is missing fields');
     }
 
