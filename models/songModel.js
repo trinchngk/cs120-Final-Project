@@ -21,7 +21,12 @@ const songSchema = mongoose.Schema(
     genre: {
       type: String,
       required: true
-    },    
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    }
   },
   {
     timestamps: true
