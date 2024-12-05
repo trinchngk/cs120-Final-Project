@@ -20,7 +20,7 @@ function auth(request, response, next) {
 router.post('/', auth, async (request, response) => {
   try {
 
-    if (!request.body.title || !request.body.artist || !request.body.album || !request.body.published || !request.body.genre || !request.user.id) {
+    if (!request.body.title || !request.body.artist || !request.body.album || !request.body.published || !request.body.genre || !request.body.rating || !request.body.cover || !request.user.id) {
       return response.status(400).send('Request body is missing fields');
     }
 
@@ -30,6 +30,8 @@ router.post('/', auth, async (request, response) => {
       album: request.body.album,
       published: request.body.published,
       genre: request.body.genre,
+      rating: request.body.rating,
+      cover: request.body.cover,
       userId: request.user.id
     };
 
@@ -81,7 +83,7 @@ router.get('/:id', auth, async (request, response) => {
 //app.put() is used to update a resource
 router.put('/:id', auth, async (request, response) => {
   try {
-    if (!request.body.title || !request.body.artist || !request.body.album || !request.body.published || !request.body.genre || !request.user.id) {
+    if (!request.body.title || !request.body.artist || !request.body.album || !request.body.published || !request.body.genre || !request.body.rating || !request.body.cover || !request.user.id) {
       return response.status(400).send('Request body is missing fields');
     }
 
