@@ -1,4 +1,5 @@
 import songsRoute from './routes/songsRoute.js';
+import usersRoute from './routes/usersRoute.js';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors'
@@ -32,7 +33,10 @@ app.get('/', (req,res) => {
     return res.status(200).send("success!");
 });
 
+
+
 app.use('/api/songs', songsRoute);
+app.use('/api/users', usersRoute);
 
 
 async function connect() {
