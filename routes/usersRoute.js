@@ -64,7 +64,7 @@ router.post('/login', async (request, response) => {
                 email: user.email
             },
                 process.env.JWT_SECRET,
-                { expiresIn: '1h' }
+                { expiresIn: '2h' }
             );
 
             const userResponse = {
