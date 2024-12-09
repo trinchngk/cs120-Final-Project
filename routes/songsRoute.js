@@ -80,7 +80,6 @@ router.get('/:id', auth, async (request, response) => {
 });
 
 //route for updating a book
-//app.put() is used to update a resource
 router.put('/:id', auth, async (request, response) => {
   try {
     if (!request.body.title || !request.body.artist || !request.body.album || !request.body.published || !request.body.genre || !request.body.rating || !request.body.cover || !request.user.id) {
