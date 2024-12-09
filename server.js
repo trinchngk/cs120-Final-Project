@@ -14,18 +14,18 @@ const CORSAO = process.env.ALLOWED_ORIGINS?.split(',');
 
 app.use(express.json());
 
-app.use(
-  cors({
-    origin: CORSAO,
-    method: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type']
-  })
+// app.use(
+//   cors({
+//     origin: CORSAO,
+//     method: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type']
+//   })
 
 
-);
+// );
 
   // allow all origins
-  // app.use(cors());
+  app.use(cors());
 
 app.get('/', (req,res) => {
     console.log(req);
