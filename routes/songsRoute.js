@@ -61,7 +61,6 @@ router.get('/', auth, async (request, response) => {
 });
 
 //route for getting a song by ID 
-//attach parameter in route using ":"
 router.get('/:id', auth, async (request, response) => {
   try {
     const { id } = request.params;
